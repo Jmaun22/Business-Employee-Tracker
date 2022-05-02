@@ -26,6 +26,13 @@ const db = mysql.createConnection(
     },
     console.log('Connected to business_db')
 );
+// inquier
+
+
+
+
+
+
 
 // Response with not found
 
