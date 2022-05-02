@@ -64,6 +64,34 @@ const mainMenu = () => {
     ]).then(res => {
         // now we call the appropriate function depending on what the user chooses
         // if or switch
+        switch (res) {
+            case "VIEW_EMPLOYEES":
+                viewEmployees();
+                
+                break;
+            case "VIEW_DEPARTMENTS":
+                
+                 break;
+            case "VIEW_ROLES":
+                
+                break;
+            case "ADD_EMPLOYEES":
+                
+                break;
+            case "ADD_DEPARTMENT":
+                
+                break;
+            case "UPDATE_ROLE":
+                
+                 break;
+            case "QUIT":
+                quit();
+                
+                 break;
+        
+            default:
+                break;
+        }
 
     })
 
