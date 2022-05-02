@@ -91,6 +91,7 @@ const mainMenu = () => {
                 
                 break;
             case "ADD_EMPLOYEES":
+                addEmployee();
                 
                 break;
             case "ADD_DEPARTMENT":
@@ -174,47 +175,57 @@ const addEmployee = () => {
  
         {
             type: "input",
-            name: "emploeeID",
+            name: "employeeID",
             message: "What is the employee id?",
 
         },
 
         {
             type: "input",
-            name: "emploeeFirstName",
+            name: "employeeFirstName",
             message: "What is your employees firstname?",
 
         },
         {
             type: "input",
-            name: "emploeeLasttName",
+            name: "emplyoeeLastName",
             message: "What is your employees lastname?",
 
         },
         {
             type: "input",
-            name: "emploeeRoleId",
+            name: "employeeRoleId",
             message: "What is your employees roleId?",
 
         },
         {
             type: "input",
-            name: "emploeeManagerId",
+            name: "employeeManagerId",
             message: "What is your employees manager_id",
 
         }
     ]).then((results) => {
-        const sql = `INSERT INTO employee (value, value)
-        VALUES (?)`;
-        db.query(sql, function (err, results) {
+        console.log(results);
+        console.log(typeof results.employeeID, typeof results.employeeFirstName, typeof results.emplyoeeLastName, typeof results.employeeRoleId, typeof results.employeeManagerId);
+        const sql = `INSERT INTO employee (id, first_name, last_name, role_id, manager_id)
+        VALUES (?, ?, ?, ?, ?)`;
+      const params = [Number(results.employeeID), results.employeeFirstName, results.emplyoeeLastName, Number(results.employeeRoleId), Number(results.employeeManagerId)];
+      
+      db.query(sql, params, (err, result) => {
 
-            console.table(results)
-            mainMenu();
+          console.log(results);
+          mainMenu();
         })
-    }
-
+    });
+}
 
 // 
+// USE business_db;
+// INSERT INTO employee (id, first_name, last_name, role_id, manager_id)
+// VALUES (8, "Jesse", "Maun", 2, 3)
+
+
+
 
 
 
