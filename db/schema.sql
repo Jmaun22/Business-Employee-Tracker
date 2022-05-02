@@ -5,7 +5,7 @@ USE business_db;
 
 CREATE TABLE department (
     id INT NOT NULL PRIMARY KEY,
-    naem VARCHAR(30) NOT NULL
+    name VARCHAR(30) NOT NULL
 );
 
 CREATE TABLE role (

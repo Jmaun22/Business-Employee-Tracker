@@ -95,6 +95,7 @@ const mainMenu = () => {
                 
                 break;
             case "ADD_DEPARTMENT":
+                addDepartment();
                 
                 break;
             case "UPDATE_ROLE":
@@ -223,6 +224,43 @@ const addEmployee = () => {
 // USE business_db;
 // INSERT INTO employee (id, first_name, last_name, role_id, manager_id)
 // VALUES (8, "Jesse", "Maun", 2, 3)
+
+// Add department
+
+const addDepartment = () => {
+    inquirer
+    .prompt([
+ 
+        {
+            type: "input",
+            name: "departmentID",
+            message: "What is the department id?",
+
+        },
+
+        {
+            type: "input",
+            name: "departmentName",
+            message: "What is the name of your department",
+
+        }
+       
+    ]).then((results) => {
+        console.log(results);
+        console.log(results.departmentID, results.departmentName);
+        const sql = `INSERT INTO department (id, name)
+        VALUES (?, ?)`;
+      const params = [Number(results.departmentID), results.departmentName];
+      
+      db.query(sql, params, (err, result) => {
+
+          console.log(results);
+          mainMenu();
+        })
+    });
+}
+
+
 
 
 
