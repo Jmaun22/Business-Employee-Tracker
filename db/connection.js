@@ -1,21 +1,22 @@
 const express = require('express');
+// Import and require mysql2
+
+
+const PORT = process.env.PORT || 3001;
+const app = express();
+
+// Express middleware
+app.use(express.urlencoded({ extended: false }));
+app.use(express.json());
 
 // Importing mysql 2
 const mysql = require('mysql2');
 
 
-// settting up the port 
-const PORT = process.env.PORT || 3001;
-const app = express();
-
-
-// express middle ware
-app.use(express.urlencoded({ extended: false }));
-app.use(express.json());
 
 // connect to database
 
-const db = mysql.createConnection(
+const connection = mysql.createConnection(
     {
         host: 'localhost',
         // mysql username
@@ -26,21 +27,10 @@ const db = mysql.createConnection(
     },
     console.log('Connected to business_db')
 );
-// inquier
 
 
-
-
-
-
-
-// Response with not found
-
-app.use((req, res) => {
-    res.status(404).end();
+connection.connect(function(err) {
+    if (err) throw err;
 });
 
-
-app.listen(PORT, () => {
-    console.log(`Server is running on port ${PORT}`);
-});
+module.exports = connection;
