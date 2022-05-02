@@ -1,10 +1,13 @@
-const { prompt } = require("inquirer");
-const db = require("./db");
-require("console.table");
+const inquirer = require('inquirer');
+// const db = require("./db");
+
+// require("console.table");
 
 
-function mainMenu() {
-    prompt([
+
+const mainMenu = () => { 
+    inquirer
+    .prompt([
         {
 
         type: "list",
@@ -16,17 +19,46 @@ function mainMenu() {
                 value: "VIEW_EMPLOYEES"
             },
             // View Employees
-            // View Departments
-            // ViewRoles
+              // View Departments
+            {
+                name: "View All Departments",
+                value: "VIEW_DEPARTMENTS"
+            },
+             // ViewRoles
+            {
+                name: "View Roles",
+                value: "VIEW_ROLES"
+
+            },
+        
             // ADD Emplyees
-            // ADD Department
-            // Update and employee role
+            {
+                name: "Add Employees",
+                value: "ADD_EMPLOYEES"
+
+            },
+              // ADD Department
+            {
+                name: "Add Department",
+                value: "ADD_DEPARTMENT"
+            },
+                 // Update and employee role
+
+            {
+                name: "Update and employee role",
+                value: "UPDATE_ROLE"
+
+            },
+          
+       
             {
                 name: "Quit",
                 value: "QUIT"
             }
         ]
     }
+
+
     
 
     ]).then(res => {
@@ -37,6 +69,8 @@ function mainMenu() {
 
 }
 
+
+mainMenu();
 
 // conditional statment here call corresonding function
 // async function viewEmployees() 
