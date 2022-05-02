@@ -3,7 +3,7 @@ FROM department
 INNER JOIN role ON department.id=role.department_id
 
 SELECT role.id, employee.role_id
-FROM role 
+FROM role
 INNER JOIN employee ON role.id=employee.role_id
 
 

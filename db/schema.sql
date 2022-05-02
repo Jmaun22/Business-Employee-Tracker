@@ -6,14 +6,14 @@ USE business_db;
 CREATE TABLE department (
     id INT NOT NULL PRIMARY KEY,
     naem VARCHAR(30) NOT NULL
-)
+);
 
 CREATE TABLE role (
     id INT NOT NULL PRIMARY KEY,
     title VARCHAR(30) NOT NULL,
     salary DECIMAL NOT NULL,
     department_id INT NOT NULL
-)
+);
 
 CREATE TABLE employee (
     id INT NOT NULL PRIMARY KEY,
@@ -23,7 +23,7 @@ CREATE TABLE employee (
     manager_id INT NOT NULL
 
 
-)
+);
 
 
 
