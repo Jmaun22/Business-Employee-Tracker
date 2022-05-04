@@ -46,6 +46,12 @@ const mainMenu = () => {
                         value: "ADD_EMPLOYEES"
 
                     },
+                    // ADD ROLE
+                    {
+                        name: "Add Role",
+                        value: "ADD_ROLE"
+
+                    },
                     // ADD Department
                     {
                         name: "Add Department",
@@ -75,7 +81,7 @@ const mainMenu = () => {
             // if or switch
             switch (res.choice) {
                 case "VIEW_EMPLOYEES":
-                    console.log('switched')
+              
                     viewEmployees();
 
 
@@ -98,6 +104,10 @@ const mainMenu = () => {
                 case "ADD_DEPARTMENT":
                     addDepartment();
 
+                    break;
+                case "ADD_ROLE":
+                        addRole();
+    
                     break;
                 case "UPDATE_ROLE":
                     updateRole();
@@ -208,8 +218,8 @@ const addEmployee = () => {
 
             }
         ]).then((results) => {
-            console.log(results);
-            console.log(typeof results.employeeID, typeof results.employeeFirstName, typeof results.emplyoeeLastName, typeof results.employeeRoleId, typeof results.employeeManagerId);
+            // console.log(results);
+            // console.log(typeof results.employeeID, typeof results.employeeFirstName, typeof results.emplyoeeLastName, typeof results.employeeRoleId, typeof results.employeeManagerId);
             const sql = `INSERT INTO employee (id, first_name, last_name, role_id, manager_id)
         VALUES (?, ?, ?, ?, ?)`;
             const params = [Number(results.employeeID), results.employeeFirstName, results.emplyoeeLastName, Number(results.employeeRoleId), Number(results.employeeManagerId)];
@@ -248,8 +258,8 @@ const addDepartment = () => {
             }
 
         ]).then((results) => {
-            console.log(results);
-            console.log(results.departmentID, results.departmentName);
+            // console.log(results);
+            // console.log(results.departmentID, results.departmentName);
             const sql = `INSERT INTO department (id, name)
         VALUES (?, ?)`;
             const params = [Number(results.departmentID), results.departmentName];
@@ -257,6 +267,54 @@ const addDepartment = () => {
             db.query(sql, params, (err, result) => {
 
                 console.log(results);
+                mainMenu();
+            })
+        });
+}
+
+
+// Add roles
+
+const addRole = () => {
+    inquirer
+        .prompt([
+
+            {
+                type: "input",
+                name: "roleID",
+                message: "What is your id?",
+
+            },
+
+            {
+                type: "input",
+                name: "title",
+                message: "What is your job title",
+
+            },
+            {
+                type: "input",
+                name: "salary",
+                message: "What salary will you have?",
+
+            },
+            {
+                type: "input",
+                name: "department_id",
+                message: "What is your department id?",
+
+            }
+
+        ]).then((results) => {
+            // console.log(results);
+            // console.log(results.departmentID, results.departmentName);
+            const sql = `INSERT INTO role (id, title, salary, department_id)
+        VALUES (?, ?, ?, ?)`;
+            const params = [Number(results.roleID), results.title, results.salary, Number(results.department_id)];
+
+            db.query(sql, params, (err, result) => {
+
+                console.log(params);
                 mainMenu();
             })
         });
@@ -282,7 +340,7 @@ const updateRole = () => {
 
 
         });
-        console.log(names)
+        // console.log(names)
 
 
         inquirer
