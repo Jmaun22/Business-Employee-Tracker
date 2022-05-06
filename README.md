@@ -18,6 +18,9 @@
     This is a Business Employee Tracker used to view and understand data of a businesses department, employee and roles. A sleek command line interface is intergated to view department data, employee data , and role data. As well as to add and update this data in the command line. 
     ## Screen Shot/Video walk through
     
+    ![Screen shot](https://github.com/Jmaun22/Business-Employee-Tracker/blob/706620ac36cec7b20604a26372f13158e4950cf5/Screen%20shot.png)
+    [link](https://drive.google.com/file/d/1N2RmTJBN068K2wOSq6o5skCMvi4vgNll/view)
+    
 
     ## intallation 
     to install this projoect git clone the project and then open the intergated terminal and type node index.js to start up. 
